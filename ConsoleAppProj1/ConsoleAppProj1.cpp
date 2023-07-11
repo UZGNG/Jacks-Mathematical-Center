@@ -2,13 +2,14 @@
 #include <string>
 #include "Calculator.h"
 #include <conio.h>
+#include <cmath>
 
 using namespace std;
 
 //Calculator Function (minifunc1) Start
 void minifunc1() {
+    system("cls");
 
-   
     int choice;
     double a = 0.0;
     double b = 0.0;
@@ -21,6 +22,7 @@ void minifunc1() {
     Calculator c;
     
         cin >> a >> oper >> b;
+        system("cls");
         result = c.Calculate(a, oper, b);
         switch (oper)
         {
@@ -33,6 +35,7 @@ void minifunc1() {
         case '/': cout << "The quotient of " << a << " and " << b << " AKA " << a << " " << oper << " " << b << " is: " << result << endl;
             break;
         }
+        cout << "\n\n";
         cout << "Would you like to try more values (1) Or return to the Main Menu (2)\n\n";
         cin >> choice;
         switch (choice)
@@ -50,6 +53,7 @@ void minifunc1() {
 //Hypotnuse Function (minifunc2) Start
 void minifunc2()
 {
+    system("cls");
     int choice;
     int leg1;
     int leg2;
@@ -58,7 +62,7 @@ void minifunc2()
     cin >> leg1;
     cout << "Enter Value of Leg 2: \n\n";
     cin >> leg2;
-    double hypotnuse = sqrt((leg1 * leg1) + (leg2 * leg2));
+    double hypotnuse = hypot(leg1, leg2);
     cout << "\n\n";
     cout << "The hypotnuse of " << leg1 << " and " << leg2 << " is: " << hypotnuse << "\n\n";
     cout << "Steps:\n\n" << "The Hypotnuse is Equal to the Square Root of the sums of each leg squared ((leg1 * leg1) + (leg2 * leg2))\n\n" << "So we start by finding the squares of each leg: " << leg1 << " * " << leg1 << " is " << (leg1 * leg1) << " and " << leg2 << " * " << leg2 << " is " << (leg2 * leg2) << "\n\n" << "Next, we add them together to get their sum: " << (leg1 * leg1) << " + " << (leg2 * leg2) << " = " << (leg1 * leg1) + (leg2 * leg2) << "\n\n" << "Finally, we take the Square Root of them to find the Hypotnuse: The Square Root of " << (leg1 * leg1) + (leg2 * leg2) << " is " << hypotnuse << "\n\n";
@@ -76,13 +80,63 @@ void minifunc2()
 }
 //Hypotnuse Function (minifunc2) End
 
+//Sine, Cosine, Tangent (minifunc3) Start
+void minifunc3()
+{
+    system("cls");
+    double value;
+    int choice;
+
+
+cout << "Sine, Cosine, and Tangent Calculator -- Just enter the values angle and I'll calculate the Sine, cosine, or tangent of it!\n\n First off, which set of values are known? Sine (1) Cosine (2) Tangent (3)\n\n";
+cin >> choice;
+switch (choice) {
+case 1:
+    system("cls");
+    cout << "Sine\n\n";
+    cout << "What is the value of your angle?\n\n";
+    cin >> value;
+    system("cls");
+    cout << "The sine of an angle that is " << value << " degrees is " << sin(value * 3.14159265 / 180) << " degrees\n\n";
+    break;
+
+case 2:
+    system("cls");
+    cout << "Cosine\n\n";
+    cout << "What is the value of your angle?\n\n";
+    cin >> value;
+    system("cls");
+    cout << "The cosine of an angle that is " << value << " degrees is " << cos(value * 3.14159265 / 180) << " degrees\n\n";
+    break;
+case 3:
+    system("cls");
+    cout << "Tangent\n\n";
+    cout << "What is the value of your angle?\n\n";
+    cin >> value;
+    system("cls");
+    cout << "The tangent of an angle that is " << value << " degrees is " << tan(value * 3.14159265 / 180) << " degrees\n\n";
+}
+
+cout << "Would you like to try more values (1) Or return to the Main Menu (2)\n\n";
+cin >> choice;
+switch (choice)
+{
+case 1:
+    system("cls");
+    minifunc3();
+
+case 2:
+    break;
+}
+}
+//Sine, Cosine, Tangent (minifunc3) Start
 
 //Main Function Start
 int main()
 {
     int choice;
     cout << "Welcome to Jack's Mathematical Center! You have a few choices for a few different kinds of calculators:\n\n";
-    cout << "Calculator (1)\n\nHypotnuse Finder (2)\n\nExit (3)\n\n";
+    cout << " Calculator (1)\n\n Hypotnuse Finder (2)\n\n Sin, Cos, Tan Calculator (3)\n\n Exit (4)\n\n";
     cin >> choice;
 
     switch (choice) {
@@ -98,8 +152,17 @@ int main()
         minifunc2();
         system("cls");
         main();
-    //Case 3 is to exit the program
+
     case 3:
+       
+        minifunc3();
+        system("cls");
+        main();
+        
+        /*system("cls");
+        main();*/
+    //The final case is to exit the program
+    case 4:
         system("cls");
         cout << "Are you sure you would like to exit the program? Yes (1) No (2)\n\n";
         int response;
@@ -109,6 +172,7 @@ int main()
         case 1:
             exit(0);
         case 2:
+            system("cls");
             main();
         }
 
